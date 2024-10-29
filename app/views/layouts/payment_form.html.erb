@@ -1,0 +1,24 @@
+<form action="/payment/results">
+  <div>
+    <label for="APR">APR</label>
+    <input id="APR" type="text" name="APR">
+  </div>
+
+  <div>
+    <label for="years_remaining">Number of years remaining</label>
+    <input id="years_remaining" type="text" name="years_remaining">
+  </div>
+
+  <div>
+    <label for="principal">Principal</label>
+    <input id="principal" type="text" name="principal">
+  </div>
+
+  <button>Calculate monthly payment</button>
+</form>
+<% if @apr %>
+  <p>APR: <%= @apr.to_fs(:percentage, precision: 4).round(4) %></p>
+  <p>Number of years: <%= @years %></p>
+  <p>Principal: <%= @pvalue %></p>
+  <p>Monthly Payment: <%= @p %></p>
+<% end %>

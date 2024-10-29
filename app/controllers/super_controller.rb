@@ -1,29 +1,32 @@
 class SuperController < ApplicationController
-  def blank_square_form
+  def homepage
+    render({ :template => "layouts/homepage"})
+  end
+  def square_form
     render({ :template => "layouts/square_form"})
   end
 
-  def results_square_form
+  def square_results
     @num = params.fetch("url_keep").to_f
     @square = @num * @num
     render({ :template => "layouts/square_results"})
   end
 
-  def blank_root_form
+  def root_form
     render({ :template => "layouts/root_form"})
   end
 
-  def results_root_form
+  def root_results
     @find_root = params.fetch("find_root").to_f
     @root = @find_root ** 0.5
     render({ :template => "layouts/root_results"})
   end
 
-  def blank_payment_form
+  def payment_form
     render({ :template => "layouts/payment_form"})
   end
 
-  def results_payment_form
+  def payment_results
     @apr = params.fetch("apr").to_f / 100
     @num_years = params.fetch("num_years").to_f
     @apr_monthly = @apr / 12
@@ -38,12 +41,12 @@ class SuperController < ApplicationController
     render({ :template => "layouts/payment_results"})
   end
 
-  def blank_random_form
+  def random_form
     render({ :template => "layouts/random_form"})
   end
     
 
-  def results_random_form
+  def random_results
     @minimum = params.fetch("min_num").to_f
     @maximum = params.fetch("max_num").to_f
     @random = rand(@minimum..@maximum)
